@@ -36,7 +36,7 @@ on:
         description: 'OS Patch Level'
         required: true
         type: string
-        default: '2025-02'
+        default: '2026-06'
       revision:
         description: 'Android 12 Revision (可选)'
         required: false
