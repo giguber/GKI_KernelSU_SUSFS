@@ -349,8 +349,13 @@ CONFIG_KSU_SUSFS_OPEN_REDIRECT=y
         elif fb in ["android12-5.10", "android13-5.10", "android13-5.15"] and "if (!vma_pages(vma))" not in content:
             if "goto show_pad;" in content:
                 content = content.replace("goto show_pad;", "return 0;")
-                with open(task_mmu, "w") as f:
-                    f.write(content)
+            # 清理因补丁偏移产生的孤立标签和未使用变量
+            if "bypass:" in content:
+                content = re.sub(r'\n\s*bypass:\s*\n', '\n', content)
+            if "struct dentry *dentry;" in content:
+                content = content.replace("struct dentry *dentry;", "")
+            with open(task_mmu, "w") as f:
+                f.write(content)
 
     def _fix_base_c_header(self):
         base_c = self.work_dir / "common/fs/proc/base.c"
