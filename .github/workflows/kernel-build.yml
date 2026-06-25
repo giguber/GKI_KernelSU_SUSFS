@@ -55,13 +55,11 @@ on:
         description: '指定 KernelSU commit hash (可选)'
         required: false
         type: string
-        default: ''
       susfs_commit:
         default: "65ea8683c794cc309c3b0c4e6b57c1d972ca9a76"
         description: '指定 SUSFS commit hash'
         required: false
         type: string
-        default: ''
       custom_version:
         description: '自定义版本名称 (可选)'
         required: false
