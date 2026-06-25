@@ -346,7 +346,7 @@ CONFIG_KSU_SUSFS_OPEN_REDIRECT=y
                 content = content.replace("goto show_pad;", "return 0;")
                 with open(task_mmu, "w") as f:
                     f.write(content)
-        elif fb in ["android12-5.10", "android13-5.10", "android13-5.15"] and "if (!vma_pages(vma))" not in content:
+        elif fb in ["android12-5.10", "android13-5.10", "android13-5.15"]:
             if "goto show_pad;" in content:
                 content = content.replace("goto show_pad;", "return 0;")
             # 清理因补丁偏移产生的孤立标签和未使用变量
